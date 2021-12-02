@@ -4,7 +4,7 @@
  * @Author: 松岛川树
  * @Date: 2021-12-02 19:57:28
  * @LastEditors: 松岛川树
- * @LastEditTime: 2021-12-03 01:42:37
+ * @LastEditTime: 2021-12-03 02:12:33
  * @FilePath: \yifangda\src\views\System\build.vue
 -->
 <template>
@@ -17,6 +17,9 @@
 import card from "@/components/system/card.vue";
 export default {
   name: "build",
+  metaInfo: {
+    title: "宜方达-工程建设",
+  },
   components: {
     card,
   },

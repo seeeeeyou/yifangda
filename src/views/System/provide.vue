@@ -4,7 +4,7 @@
  * @Author: 松岛川树
  * @Date: 2021-12-02 19:57:28
  * @LastEditors: 松岛川树
- * @LastEditTime: 2021-12-03 01:39:58
+ * @LastEditTime: 2021-12-03 02:14:54
  * @FilePath: \yifangda\src\views\System\provide.vue
 -->
 <template>
@@ -17,6 +17,9 @@
 import card from "@/components/system/card.vue";
 export default {
   name: "provide",
+  metaInfo: {
+    title: "宜方达-供热供水",
+  },
   components: {
     card,
   },

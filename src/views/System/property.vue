@@ -4,7 +4,7 @@
  * @Author: 松岛川树
  * @Date: 2021-12-02 19:57:28
  * @LastEditors: 松岛川树
- * @LastEditTime: 2021-12-03 01:44:39
+ * @LastEditTime: 2021-12-03 02:14:20
  * @FilePath: \yifangda\src\views\System\property.vue
 -->
 <template>
@@ -17,6 +17,9 @@
 import card from "@/components/system/card.vue";
 export default {
   name: "property",
+  metaInfo: {
+    title: "宜方达-物业服务",
+  },
   components: {
     card,
   },
