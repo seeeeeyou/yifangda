@@ -1,13 +1,16 @@
 <template>
   <div class="industry">
-      <h1>行业新闻</h1>
+      <my-notice :id="1"/>
   </div>
 </template>
 
 <script>
 export default {
   name: 'industry',
-  components: {
+  data(){
+    return{
+
+    }
   }
 }
 </script>

@@ -11,7 +11,7 @@
   <div id="footer">
     <!-- 联系方式 -->
     <div class="footer-top">
-      <div class="footer-top-item" v-for="item in footerTopItem" :key="item">
+      <div class="footer-top-item" v-for="(item,index) in footerTopItem" :key="index">
         <img :src="item.img" alt="" />
         <span>{{ item.text }}</span>
       </div>
@@ -21,7 +21,7 @@
 
     <!-- 底部导航 -->
     <div class="footer-content">
-      <div v-for="item in routers" :key="item">
+      <div v-for="(item,index) in routers" :key="index">
         <div class="footer-content-item">
           <div class="title">{{ item.name }}</div>
           <div class="content">
@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <div class="footer-content-item" v-for="item in codes" :key="item">
+      <div class="footer-content-item" v-for="(item,index) in codes" :key="index">
         <div class="title">{{ item.title }}</div>
         <div class="content">
           <img :src="item.img" alt="" />

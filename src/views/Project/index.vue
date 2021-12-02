@@ -1,6 +1,8 @@
 <template>
   <div class="project">
     <my-banner :banner="banner" />
+    <h1>服务项目</h1>
+    <my-notice :id="5" />
   </div>
 </template>
 

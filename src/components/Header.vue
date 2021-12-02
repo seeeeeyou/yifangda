@@ -7,7 +7,7 @@
         </router-link>
       </div>
       <div class="navMenu">
-        <div v-for="(item, index) of navDic" :key="index">
+        <div v-for="item of navDic" :key="item.id">
           <router-link :to="item.path">
             <span>{{ item.name }}</span>
           </router-link>
@@ -58,6 +58,7 @@ export default {
       navDic: [
         // 关于我们
         {
+          id: 1,
           path: "/about",
           name: "关于我们",
           children: [
@@ -85,11 +86,13 @@ export default {
         },
         // 服务项目
         {
+          id: 2,
           path: "/project",
           name: "服务项目",
         },
         // 服务体系
         {
+          id: 3,
           path: "/system",
           name: "服务体系",
           children: [
@@ -117,10 +120,12 @@ export default {
         },
         // 新闻动态
         {
+          id: 4,
           path: "/journalism",
           name: "新闻动态",
           children: [
             {
+              
               path: "/journalism/industry",
               name: "行业新闻",
             },
@@ -136,11 +141,13 @@ export default {
         },
         // 企业人才需要
         {
+          id: 5,
           path: "/recruit",
           name: "企业人才需要",
         },
         // 党建工作
         {
+          id: 6,
           path: "/party",
           name: "党建工作",
         },
@@ -210,6 +217,7 @@ export default {
   position: absolute;
   top: 0;
   width: 100%;
+  z-index: 9;
   border-bottom: 2px solid rgba(255, 255, 255, 0.35);
   > .nav {
     margin: auto;

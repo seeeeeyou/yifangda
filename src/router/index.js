@@ -59,7 +59,7 @@ const routes = [
     path: "/system",
     name: "服务体系",
     component: (resolve) => require(["@/views/System"], resolve),
-    redirect: "/System/property",
+    redirect: "/system/property",
     children: [
       {
         path: "property",
@@ -69,25 +69,23 @@ const routes = [
       {
         path: "provide",
         name: "供热供水",
-        component: (resolve) =>
-          require(["@/views/System/provide"], resolve),
+        component: (resolve) => require(["@/views/System/provide"], resolve),
       },
       {
         path: "preferred",
         name: "宜民优选",
-        component: (resolve) =>
-          require(["@/views/System/preferred"], resolve),
+        component: (resolve) => require(["@/views/System/preferred"], resolve),
       },
       {
         path: "convenience",
         name: "便民服务",
-        component: (resolve) => require(["@/views/System/convenience"], resolve),
+        component: (resolve) =>
+          require(["@/views/System/convenience"], resolve),
       },
       {
         path: "build",
         name: "工程建设",
-        component: (resolve) =>
-          require(["@/views/System/build"], resolve),
+        component: (resolve) => require(["@/views/System/build"], resolve),
       },
     ],
   },
@@ -95,13 +93,14 @@ const routes = [
   {
     path: "/journalism",
     name: "新闻动态",
-    component: (resolve) => require(["@/views/System"], resolve),
-    redirect: "/Journalism/industry",
+    component: (resolve) => require(["@/views/Journalism"], resolve),
+    redirect: "/journalism/industry",
     children: [
       {
         path: "industry",
         name: "行业新闻",
-        component: (resolve) => require(["@/views/Journalism/industry"], resolve),
+        component: (resolve) =>
+          require(["@/views/Journalism/industry"], resolve),
       },
       {
         path: "company",
@@ -114,7 +113,7 @@ const routes = [
         name: "小区动态",
         component: (resolve) =>
           require(["@/views/Journalism/community"], resolve),
-      }
+      },
     ],
   },
   // 企业人才需要

@@ -1,13 +1,12 @@
 <template>
   <div class="company">
-      <h1>公司动态</h1>
+    <my-notice :id="2" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'company',
-  components: {
-  }
-}
+  name: "company",
+  components: {},
+};
 </script>

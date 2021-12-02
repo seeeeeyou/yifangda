@@ -1,6 +1,7 @@
 <template>
   <div class="party">
-    <my-banner :banner="banner" />
+    <my-banner :banner="banner" :nav="[]" />
+    <my-notice :id="4" />
   </div>
 </template>
 

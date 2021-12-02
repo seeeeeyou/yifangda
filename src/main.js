@@ -14,10 +14,12 @@ import store from "./store";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Banner from '@/components/banner'
+import NewNotice from '@/components/newNotice'
+
 import 'animate.css';
 import "./plugins/antdUI";
 
-const ElArr = [Header, Footer, Banner, ];
+const ElArr = [Header, Footer, Banner, NewNotice];
 for (let i of ElArr) {
     Vue.component(i.name, i);
 }
