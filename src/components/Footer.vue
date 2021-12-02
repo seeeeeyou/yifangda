@@ -4,7 +4,7 @@
  * @Author: 松岛川树
  * @Date: 2021-12-02 19:57:28
  * @LastEditors: 松岛川树
- * @LastEditTime: 2021-12-02 22:27:14
+ * @LastEditTime: 2021-12-02 22:37:27
  * @FilePath: \yifangda\src\components\Footer.vue
 -->
 <template>
@@ -190,7 +190,7 @@ export default {
   width: 100%;
   left: 0;
   background-color: rgba(37, 36, 56, 0.9);
-  position: fixed;
+  position: relative;
   bottom: 0;
   z-index: 999;
 }
