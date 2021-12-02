@@ -21,7 +21,6 @@ const ElArr = [Header, Footer, Banner, ];
 for (let i of ElArr) {
     Vue.component(i.name, i);
 }
-Vue.use(Drawer)
 Vue.config.productionTip = false;
 
 new Vue({
