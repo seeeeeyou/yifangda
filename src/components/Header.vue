@@ -24,10 +24,26 @@
         </div>
       </div>
       <div class="sideBar">
-        <div class="nav">
+        <div class="nav" @click="showDrawer">
           <img src="@/assets/img/Home/nav.png" alt="" />
         </div>
       </div>
+
+      <a-drawer
+        title="菜单"
+        placement="right"
+        :closable="false"
+        :visible="visible"
+        @close="onClose"
+      >
+        <div class="sideMenu">
+          <div v-for="(item, index) of navDic" :key="index">
+            <router-link :to="item.path">
+              <span>{{ item.name }}</span>
+            </router-link>
+          </div>
+        </div>
+      </a-drawer>
     </div>
   </div>
 </template>
@@ -37,6 +53,8 @@ export default {
   name: "my-header",
   data() {
     return {
+      checked: "",
+      visible: false,
       navDic: [
         // 关于我们
         {
@@ -129,6 +147,23 @@ export default {
       ],
     };
   },
+  methods: {
+    showDrawer() {
+      this.visible = true;
+    },
+    onClose() {
+      this.visible = false;
+    },
+  },
+  watch: {
+    $route: {
+      handler(val) {
+        this.checked = val.path;
+        // console.log(this.checked);
+      },
+      immediate: true,
+    },
+  },
 };
 </script>
 
@@ -197,6 +232,7 @@ export default {
         }
       }
     }
+
     > .navMenu {
       display: flex;
       justify-content: space-around;
@@ -212,6 +248,7 @@ export default {
             font-size: 15px;
             font-family: Microsoft YaHei, Microsoft YaHei-Regular;
             color: #ffffff;
+            font-weight: bold;
           }
         }
         > .childNav {
@@ -240,8 +277,7 @@ export default {
       > div:hover {
         > a {
           > span {
-            color: #d20505;
-            border-bottom: 2px solid #d20505;
+            .checked();
           }
         }
         .childNav {
@@ -250,5 +286,31 @@ export default {
       }
     }
   }
+}
+.sideMenu {
+  > div {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 2px solid rgb(201, 195, 195);
+    > a {
+      > span {
+        display: block;
+        width: 100%;
+        height: 100%;
+        font-size: 12px;
+        font-family: Microsoft YaHei, Microsoft YaHei-Regular;
+        color: black;
+        font-weight: bold;
+        margin-left: 10px;
+      }
+      > span:hover {
+        color: #d20505;
+      }
+    }
+  }
+}
+.checked {
+  color: #d20505;
+  border-bottom: 2px solid #d20505;
 }
 </style>

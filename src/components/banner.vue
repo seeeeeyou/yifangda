@@ -3,7 +3,7 @@
     <div class="img">
       <img :src="banner" alt="" />
     </div>
-    <div class="nav" v-if="nav.length>1">
+    <div class="nav" v-if="nav.length > 1">
       <div v-for="(item, index) of nav" :key="index">
         <router-link :to="item.path">
           <span>{{ item.name }}</span>
@@ -47,11 +47,11 @@ export default {
     }
   }
   .nav {
-    height: 70px;
+    height: 60px;
     background: #f0f0f1;
     display: flex;
     justify-content: center;
-    line-height: 70px;
+    line-height: 60px;
     > div {
       width: 100px;
       text-align: center;
@@ -64,6 +64,14 @@ export default {
           color: #333333;
           font-size: 1.4rem;
           font-weight: bold;
+        }
+      }
+    }
+    > div:hover {
+      > a {
+        > span {
+          color: #d20505;
+          border-bottom: 2px solid #d20505; 
         }
       }
     }
