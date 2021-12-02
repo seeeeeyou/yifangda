@@ -5,9 +5,10 @@ import store from "./store";
 import {} from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
 import Header from "@/components/Header";
-import Footer from "@/components/Header";
+import Footer from "@/components/Footer";
+import Banner from '@/components/banner'
 
-const ElArr = [Header, Footer];
+const ElArr = [Header, Footer, Banner];
 for (let i of ElArr) {
   Vue.component(i.name, i);
 }

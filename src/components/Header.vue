@@ -1,10 +1,32 @@
 <template>
   <div class="header">
-    <div class="navMenu">
-      <div v-for="(item, index) of navDic" :key="index">
-        <router-link :to="item.path">
-          <span>{{ item.name }}</span>
+    <div class="nav">
+      <div class="logo">
+        <router-link to="/">
+          <img src="@/assets/img/Home/logo.png" alt="" />
         </router-link>
+      </div>
+      <div class="navMenu">
+        <div v-for="(item, index) of navDic" :key="index">
+          <router-link :to="item.path">
+            <span>{{ item.name }}</span>
+          </router-link>
+          <div class="childNav">
+            <div
+              v-for="(childItem, childIndex) of item.children"
+              :key="childIndex"
+            >
+              <router-link :to="childItem.path">
+                <span>{{ childItem.name }}</span>
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sideBar">
+        <div class="nav">
+          <img src="@/assets/img/Home/nav.png" alt="" />
+        </div>
       </div>
     </div>
   </div>
@@ -22,23 +44,23 @@ export default {
           name: "关于我们",
           children: [
             {
-              path: "introduction",
+              path: "/about/introduction",
               name: "公司介绍",
             },
             {
-              path: "corporateCulture",
+              path: "/about/corporateCulture",
               name: "企业文化",
             },
             {
-              path: "development",
+              path: "/about/development",
               name: "发展历程",
             },
             {
-              path: "staffStyle",
+              path: "/about/staffStyle",
               name: "员工风采",
             },
             {
-              path: "qualifications",
+              path: "/about/qualifications",
               name: "企业资质",
             },
           ],
@@ -54,23 +76,23 @@ export default {
           name: "服务体系",
           children: [
             {
-              path: "property",
+              path: "/system/property",
               name: "物业服务",
             },
             {
-              path: "provide",
+              path: "/system/provide",
               name: "供热供水",
             },
             {
-              path: "preferred",
+              path: "/system/preferred",
               name: "宜民优选",
             },
             {
-              path: "convenience",
+              path: "/system/convenience",
               name: "便民服务",
             },
             {
-              path: "build",
+              path: "/system/build",
               name: "工程建设",
             },
           ],
@@ -81,15 +103,15 @@ export default {
           name: "新闻动态",
           children: [
             {
-              path: "industry",
+              path: "/journalism/industry",
               name: "行业新闻",
             },
             {
-              path: "company",
+              path: "/journalism/company",
               name: "公司动态",
             },
             {
-              path: "community",
+              path: "/journalism/community",
               name: "小区动态",
             },
           ],
@@ -111,19 +133,119 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@media screen and(min-width: 1200px) {
+  .header {
+    .nav {
+      width: 80%;
+      justify-content: space-between;
+    }
+  }
+}
+@media screen and(max-width: 1200px) {
+  .header {
+    .nav {
+      width: 90%;
+      justify-content: space-between;
+    }
+  }
+}
+@media screen and(max-width: 920px) {
+  .header {
+    .nav {
+      width: 100%;
+      justify-content: space-around;
+    }
+  }
+}
+@media screen and(max-width: 850px) {
+  .header {
+    .nav {
+      width: 90%;
+      justify-content: space-between;
+      .navMenu {
+        display: none !important;
+      }
+      .sideBar {
+        display: block !important;
+      }
+    }
+  }
+}
 .header {
-  > .navMenu {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+  > .nav {
+    margin: auto;
+    height: 70px;
     display: flex;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    > div {
-      padding: 20px;
-      text-align: center;
-      > a {
-        > span {
-          font-size: 1.4rem;
-          font-family: Microsoft YaHei, Microsoft YaHei-Regular;
-          color: #ffffff;
+    line-height: 70px;
+    > .logo {
+      width: 160px;
+      img {
+        width: 100%;
+      }
+    }
+    .sideBar {
+      display: none;
+      > .nav {
+        width: 40px;
+        > img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+    > .navMenu {
+      display: flex;
+      justify-content: space-around;
+      width: 73%;
+      > div {
+        flex: 1;
+        text-align: center;
+        > a {
+          > span {
+            display: block;
+            width: 100%;
+            height: 72px;
+            font-size: 15px;
+            font-family: Microsoft YaHei, Microsoft YaHei-Regular;
+            color: #ffffff;
+          }
+        }
+        > .childNav {
+          display: none;
+          background: rgba(250, 45, 45, 0.5);
+          width: 100%;
+          > div {
+            height: 40px;
+            line-height: 40px;
+            > a {
+              > span {
+                display: block;
+                width: 100%;
+                height: 100%;
+                font-size: 1.2rem;
+                font-family: Microsoft YaHei, Microsoft YaHei-Regular;
+                color: #ffffff;
+              }
+              > span:hover {
+                color: #d20505;
+              }
+            }
+          }
+        }
+      }
+      > div:hover {
+        > a {
+          > span {
+            color: #d20505;
+            border-bottom: 2px solid #d20505;
+          }
+        }
+        .childNav {
+          display: block;
         }
       }
     }

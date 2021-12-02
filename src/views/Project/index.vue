@@ -1,13 +1,16 @@
 <template>
   <div class="project">
-      <h1>服务项目</h1>
+    <my-banner :banner="banner" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'project',
-  components: {
-  }
-}
+  name: "project",
+  data() {
+    return {
+      banner: require("@/assets/img/journalism/banner@2x.png"),
+    };
+  },
+};
 </script>
