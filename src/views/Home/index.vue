@@ -1,12 +1,3 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: 松岛川树
- * @Date: 2021-12-02 19:57:28
- * @LastEditors: 松岛川树
- * @LastEditTime: 2021-12-02 23:05:04
- * @FilePath: \yifangda\src\views\Home\index.vue
--->
 <template>
   <div class="home">
     <my-banner :banner="banner" />
@@ -301,6 +292,25 @@ export default {
         }
       }
     }
+    .modular {
+      > .content {
+        .itemContent {
+          flex-wrap: wrap;
+          >*{
+            width: 100% !important;
+          }
+          // >.img{
+          //   width: 50% !important;
+          //   position: relative;
+          //   >img{
+          //     position: absolute;
+          //     top: 50%;
+          //     transform: translateY(-50%);
+          //   }
+          // }
+        }
+      }
+    }
   }
 }
 
@@ -407,11 +417,11 @@ export default {
           > :last-child {
             padding: 10px;
             width: 80%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+            // overflow: hidden;
+            // text-overflow: ellipsis;
+            // display: -webkit-box;
+            // -webkit-line-clamp: 2;
+            // -webkit-box-orient: vertical;
             > :first-child {
               font-size: 13px;
               font-family: Microsoft YaHei, Microsoft YaHei-Regular;

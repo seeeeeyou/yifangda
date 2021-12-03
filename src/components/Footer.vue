@@ -1,14 +1,5 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: 松岛川树
- * @Date: 2021-12-02 19:57:28
- * @LastEditors: 松岛川树
- * @LastEditTime: 2021-12-03 00:58:03
- * @FilePath: \yifangda\src\components\Footer.vue
--->
 <template>
-  <div id="footer">
+  <div id="footer" :style="`background-image:url(${require('@/assets/img/Home/footer.png')})`">
     <div class="content">
       <!-- 联系方式 -->
       <div class="footer-top">
@@ -36,7 +27,6 @@
             </div>
           </div>
         </div>
-
         <!-- 二维码 -->
         <!-- <div class="footer-content-item" v-for="(item,index) in codes" :key="index">
         <div class="title">{{ item.title }}</div>
@@ -46,13 +36,12 @@
         <span v-html="item.text"></span>
       </div> -->
       </div>
-
       <!-- 底部版权 -->
       <div class="bottom-copyright">
         <div
           class="bottom-copyright-item"
-          v-for="item in bottomCopyrightItem"
-          :key="item"
+          v-for="(item,index) in bottomCopyrightItem"
+          :key="index"
         >
           <span v-html="item.text"></span>
         </div>
@@ -141,7 +130,7 @@ export default {
   },
   mounted() {
     this.routers = this.$router.options.routes.map((item) => {
-      if (item.path == "/") {
+      if (item.path == "/" || item.path == "*") {
         return null;
       } else if (item.path == "/project") {
         return {

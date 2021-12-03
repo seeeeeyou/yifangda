@@ -1,12 +1,3 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: 松岛川树
- * @Date: 2021-12-02 19:57:28
- * @LastEditors: 松岛川树
- * @LastEditTime: 2021-12-03 01:39:58
- * @FilePath: \yifangda\src\views\System\provide.vue
--->
 <template>
   <div class="container">
     <card :introduction="introduction" :imageList="imageList" />

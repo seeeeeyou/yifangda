@@ -1,12 +1,3 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: 松岛川树
- * @Date: 2021-12-03 01:04:28
- * @LastEditors: 松岛川树
- * @LastEditTime: 2021-12-03 01:33:25
- * @FilePath: \yifangda\src\components\system\card.vue
--->
 <template>
   <div class="container">
     <div class="card">
