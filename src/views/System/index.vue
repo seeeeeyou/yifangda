@@ -1,7 +1,7 @@
 <template>
   <div class="system">
     <my-banner :banner="banner" :nav="nav" />
-    <router-view></router-view>
+    <router-view />
   </div>
 </template>
 

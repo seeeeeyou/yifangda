@@ -1,12 +1,13 @@
 <template>
   <div id="app">
-    <my-header />
+    <my-header v-if="$route.name!='error'"/>
     <router-view />
-    <my-footer />
+    <my-footer v-if="$route.name!='error'"/>
   </div>
 </template>
 
 <style lang="less">
+@import './style/reset.css';
 @media screen and(max-width: 900px) {
   html {
     font-size: 8px !important;
