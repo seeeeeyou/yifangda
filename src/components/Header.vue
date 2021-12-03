@@ -1,50 +1,67 @@
 <template>
-  <div class="header">
-    <div class="nav">
-      <div class="logo">
-        <router-link to="/">
-          <img src="@/assets/img/Home/logo.png" alt="" />
-        </router-link>
-      </div>
-      <div class="navMenu">
-        <div v-for="item of navDic" :key="item.id">
-          <router-link :to="item.path">
-            <span>{{ item.name }}</span>
+  <div>
+    <div class="header" :class="scroll > 70 ? 'move' : ''">
+      <div class="nav">
+        <div class="logo">
+          <router-link to="/">
+            <img src="@/assets/img/Home/logo.png" alt="" />
+            <img class="hover" src="@/assets/img/Home/logo_hover.png" alt="" />
           </router-link>
-          <div class="childNav">
-            <div
-              v-for="(childItem, childIndex) of item.children"
-              :key="childIndex"
-            >
-              <router-link :to="childItem.path">
-                <span>{{ childItem.name }}</span>
-              </router-link>
-            </div>
-          </div>
         </div>
-      </div>
-      <div class="sideBar">
-        <div class="nav" @click="showDrawer">
-          <img src="@/assets/img/Home/nav.png" alt="" />
-        </div>
-      </div>
-
-      <a-drawer
-        title="菜单"
-        placement="right"
-        :closable="false"
-        :visible="visible"
-        @close="onClose"
-      >
-        <div class="sideMenu">
-          <div v-for="(item, index) of navDic" :key="index">
+        <div class="navMenu">
+          <div
+            v-for="item of navDic"
+            :key="item.id"
+            :class="checked === item.path ? 'checked' : ''"
+          >
             <router-link :to="item.path">
               <span>{{ item.name }}</span>
             </router-link>
+            <div class="childNav">
+              <div
+                v-for="(childItem, childIndex) of item.children"
+                :key="childIndex"
+              >
+                <router-link :to="childItem.path">
+                  <span>{{ childItem.name }}</span>
+                </router-link>
+              </div>
+            </div>
           </div>
         </div>
-      </a-drawer>
+        <div class="sideBar">
+          <div class="nav" @click="showDrawer">
+            <img src="@/assets/img/Home/nav.png" alt="" />
+          </div>
+        </div>
+
+        <a-drawer
+          title="菜单"
+          placement="right"
+          :closable="false"
+          :visible="visible"
+          @close="onClose"
+        >
+          <div class="sideMenu">
+            <div>
+              <router-link to="/">
+                <span :style="checked === '/' ? 'color: #d20505;' : ''"
+                  >首页</span
+                >
+              </router-link>
+            </div>
+            <div v-for="(item, index) of navDic" :key="index">
+              <router-link :to="item.path">
+                <span :style="checked === item.path ? 'color: #d20505;' : ''">{{
+                  item.name
+                }}</span>
+              </router-link>
+            </div>
+          </div>
+        </a-drawer>
+      </div>
     </div>
+    <div class="height"></div>
   </div>
 </template>
 
@@ -53,6 +70,7 @@ export default {
   name: "my-header",
   data() {
     return {
+      scroll: 0,
       checked: "",
       visible: false,
       navDic: [
@@ -125,7 +143,6 @@ export default {
           name: "新闻动态",
           children: [
             {
-              
               path: "/journalism/industry",
               name: "行业新闻",
             },
@@ -161,12 +178,23 @@ export default {
     onClose() {
       this.visible = false;
     },
+    scrollTop() {
+      this.scroll =
+        document.documentElement.scrollTop || document.body.scrollTop;
+    },
+  },
+  mounted() {
+    window.addEventListener("scroll", this.scrollTop);
   },
   watch: {
     $route: {
       handler(val) {
-        this.checked = val.path;
-        // console.log(this.checked);
+        const isHave = Boolean(val.path.lastIndexOf("/"));
+        this.checked = isHave
+          ? val.path.substring(0, val.path.lastIndexOf("/"))
+          : val.path;
+        console.log(this.checked);
+        this.onClose();
       },
       immediate: true,
     },
@@ -180,6 +208,21 @@ export default {
     .nav {
       width: 80%;
       justify-content: space-between;
+      > .logo {
+        > a {
+          .hover {
+            display: none;
+          }
+        }
+        > a:hover {
+          > :first-child {
+            display: none;
+          }
+          > .hover {
+            display: block;
+          }
+        }
+      }
     }
   }
 }
@@ -188,6 +231,21 @@ export default {
     .nav {
       width: 90%;
       justify-content: space-between;
+      > .logo {
+        > a {
+          .hover {
+            display: none;
+          }
+        }
+        > a:hover {
+          > :first-child {
+            display: none;
+          }
+          > .hover {
+            display: block;
+          }
+        }
+      }
     }
   }
 }
@@ -201,9 +259,23 @@ export default {
 }
 @media screen and(max-width: 850px) {
   .header {
+    border-bottom: 0 !important;
+    position: fixed !important;
+    top: 0;
+    z-index: 999;
     .nav {
       width: 90%;
       justify-content: space-between;
+      .logo {
+        > a {
+          > :first-child {
+            display: none !important;
+          }
+          > .hover {
+            display: block !important;
+          }
+        }
+      }
       .navMenu {
         display: none !important;
       }
@@ -211,6 +283,9 @@ export default {
         display: block !important;
       }
     }
+  }
+  .height {
+    height: 70px;
   }
 }
 .header {
@@ -226,13 +301,20 @@ export default {
     line-height: 70px;
     > .logo {
       width: 160px;
-      img {
-        width: 100%;
+      position: relative;
+      > a {
+        img {
+          width: 100%;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+        }
       }
     }
     .sideBar {
       display: none;
       > .nav {
+        line-height: 70px;
         width: 40px;
         > img {
           width: 100%;
@@ -253,6 +335,7 @@ export default {
             display: block;
             width: 100%;
             height: 72px;
+            line-height: 70px;
             font-size: 15px;
             font-family: Microsoft YaHei, Microsoft YaHei-Regular;
             color: #ffffff;
@@ -265,13 +348,13 @@ export default {
           width: 100%;
           > div {
             height: 40px;
-            line-height: 40px;
             > a {
               > span {
                 display: block;
                 width: 100%;
                 height: 100%;
-                font-size: 1.2rem;
+                line-height: 40px;
+                font-size: 0.8rem;
                 font-family: Microsoft YaHei, Microsoft YaHei-Regular;
                 color: #ffffff;
               }
@@ -290,6 +373,8 @@ export default {
         }
         .childNav {
           display: block;
+          animation: fadeIn;
+          animation-duration: 1s;
         }
       }
     }
@@ -298,10 +383,10 @@ export default {
 .sideMenu {
   > div {
     height: 40px;
-    line-height: 40px;
     border-bottom: 2px solid rgb(201, 195, 195);
     > a {
       > span {
+        line-height: 40px;
         display: block;
         width: 100%;
         height: 100%;
@@ -320,5 +405,18 @@ export default {
 .checked {
   color: #d20505;
   border-bottom: 2px solid #d20505;
+  height: 72px;
+}
+@keyframes bg_move {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: white;
+  }
+}
+.move {
+  animation: bg_move 0.6s linear forwards;
+  // box-shadow: 0 5px 5px 1px rgb(213 213 213 / 60%);
 }
 </style>

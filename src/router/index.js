@@ -128,6 +128,12 @@ const routes = [
     name: "党建工作",
     component: (resolve) => require(["@/views/Party"], resolve),
   },
+  //error
+  {
+    path: "*",
+    name: "error",
+    component: (resolve) => require(["@/views/Error"], resolve),
+  },
 ];
 
 const router = new VueRouter({

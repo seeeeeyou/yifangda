@@ -9,60 +9,71 @@
 -->
 <template>
   <div id="footer">
-    <!-- 联系方式 -->
-    <div class="footer-top">
-      <div class="footer-top-item" v-for="(item,index) in footerTopItem" :key="index">
-        <img :src="item.img" alt="" />
-        <span>{{ item.text }}</span>
-      </div>
-    </div>
-    <!-- 分割下划线 -->
-    <div class="footer-line"></div>
-
-    <!-- 底部导航 -->
-    <div class="footer-content">
-      <div v-for="(item,index) in routers" :key="index">
-        <div class="footer-content-item">
-          <div class="title">{{ item.name }}</div>
-          <div class="content">
-            <router-link
-              v-for="i in item.children"
-              :key="i"
-              :to="item.path + '/' + i.path"
-              >{{ i.name }}</router-link
-            >
-          </div>
+    <div class="content">
+      <!-- 联系方式 -->
+      <div class="footer-top">
+        <div
+          class="footer-top-item"
+          v-for="(item, index) in footerTopItem"
+          :key="index"
+        >
+          <img :src="item.img" alt="" />
+          <span>{{ item.text }}</span>
         </div>
       </div>
 
-      <div class="footer-content-item" v-for="(item,index) in codes" :key="index">
+      <!-- 底部导航 -->
+      <div class="footer-content">
+        <div class="content_left">
+          <div v-for="(item, index) in routers" :key="index">
+            <div class="footer-content-item">
+              <div class="title">{{ item.name }}</div>
+              <div class="content" v-for="i in item.children" :key="i">
+                <router-link :to="item.path + '/' + i.path">{{
+                  i.name
+                }}</router-link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 二维码 -->
+        <!-- <div class="footer-content-item" v-for="(item,index) in codes" :key="index">
         <div class="title">{{ item.title }}</div>
         <div class="content">
           <img :src="item.img" alt="" />
         </div>
         <span v-html="item.text"></span>
-      </div>
-    </div>
-
-    <!-- 分割下划线 -->
-    <div class="footer-line"></div>
-
-    <!-- 底部版权 -->
-    <div class="bottom-copyright">
-      <div
-        class="bottom-copyright-item"
-        v-for="item in bottomCopyrightItem"
-        :key="item"
-      >
-        <span v-html="item.text"></span>
+      </div> -->
       </div>
 
-      <div class="bottom-copyright-item">
-        <span>
-          <img src="../assets/img/Home/TB1.png" alt="" />
-          <img src="../assets/img/Home/TB1S.png" alt="" />沪公网安备
-          31011302005598号 沪ICP备13036153号-1</span
+      <!-- 底部版权 -->
+      <div class="bottom-copyright">
+        <div
+          class="bottom-copyright-item"
+          v-for="item in bottomCopyrightItem"
+          :key="item"
         >
+          <span v-html="item.text"></span>
+        </div>
+
+        <div class="bottom-copyright-item">
+          <div>
+            <img src="../assets/img/Home/TB1.png" alt="" />
+            <img src="../assets/img/Home/TB1S.png" alt="" />
+          </div>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011302005598"
+            target="_bland"
+            >沪公网安备 31011302005598号</a
+          >
+          <a
+            href="https://beian.miit.gov.cn/#/Integrated/index"
+            target="_bland"
+          >
+            沪ICP备13036153号-1</a
+          >
+        </div>
       </div>
     </div>
   </div>
@@ -183,165 +194,115 @@ export default {
 <style scoped lang="less">
 @color-grey: grey;
 
-// pc
-@media screen and (min-width: 768px) {
-  #footer {
-    min-height: 65vh;
-  }
-  // 底部内容
-  .footer-content {
+#footer {
+  .content {
     width: 80%;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    margin-top: 2vh;
-    .footer-content-item {
-      display: inline-block;
-      .title {
-        font-size: 16px;
-        color: #fff;
-        font-weight: bold;
-        margin-bottom: 10px;
-        text-align: center;
-      }
-      .content {
-        font-size: 14px;
-        color: #fff;
-        margin-bottom: 10px;
-        a {
-          color: @color-grey;
-          font-size: 14px;
-          margin-bottom: 10px;
-          display: block;
-        }
-        a:hover {
-          color: #fff;
-          text-decoration: none;
-        }
-      }
-      span {
-        color: @color-grey;
-      }
-    }
-  }
-  .footer-top {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    .footer-top-item {
-      margin-top: 40px;
-      align-items: center;
-
-      img {
-        width: 50px;
-        height: 50px;
-      }
-      span {
-        font-size: 16px;
-        color: #fff;
-        font-weight: bold;
-        margin-left: 10px;
-      }
-    }
-  }
-}
-
-// 移动端
-@media screen and (max-width: 767px) {
-  #footer {
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-
-    .footer-top {
-      width: 80%;
+    margin: auto;
+    .footer-content {
+      width: 100%;
       display: flex;
-      margin: 0 auto;
-      text-align: center;
-      .footer-top-item{
-        width: 100%;
-        margin-top: 20px;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 2px solid rgba(179, 178, 178, 0.8);
+      .content_left {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .footer-content-item {
+          margin-top: 5px;
+          text-align: center;
+          .title {
+            font-size: 14px;
+            color: #fff;
+            margin-bottom: 10px;
+            text-align: center;
+          }
+          .content {
+            width: 100%;
+            padding: 5px;
+            a {
+              color: @color-grey;
+              font-size: 13px;
+            }
+            a:hover {
+              color: #fff;
+              text-decoration: none;
+            }
+          }
+          span {
+            color: @color-grey;
+          }
+        }
+      }
+    }
+    .footer-top {
+      width: 100%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 15px 0;
+      border-bottom: 2px solid rgba(179, 178, 178, 0.8);
+      .footer-top-item {
+        height: 100%;
         align-items: center;
+        padding: 15px 0;
         img {
-          width: 30px;
-          height: 30px;
+          width: 50px;
+          height: 50px;
         }
         span {
-          font-size: 14px;
+          font-size: 16px;
           color: #fff;
           font-weight: bold;
           margin-left: 10px;
         }
       }
     }
-
-    .footer-content {
-      width: 80%;
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0 auto;
-      margin-top: 2vh;
-      .footer-content-item {
-        width: 100px;
-        margin: 0 auto;
-        .title {
-          font-size: 16px;
-          color: #fff;
-          font-weight: bold;
-          margin-bottom: 10px;
-        }
-        .content {
-          font-size: 14px;
-          color: #fff;
-          margin-bottom: 10px;
-          a {
-            color: @color-grey;
-            font-size: 14px;
-            margin-bottom: 10px;
-            display: block;
-          }
-          a:hover {
-            color: #fff;
-            text-decoration: none;
+    // 底部版权
+    .bottom-copyright {
+      width: 100%;
+      padding: 10px 0;
+      .bottom-copyright-item {
+        padding: 2px 0;
+        > div {
+          display: inline-block;
+          > img {
+            display: inline-block;
+            padding: 0 1px;
+            margin-top: -3px;
           }
         }
         span {
+          font-size: 13px;
           color: @color-grey;
+        }
+        > a {
+          font-size: 13px;
+          color: @color-grey;
+        }
+        > a:hover {
+          color: rgb(209, 207, 207);
         }
       }
     }
   }
 }
 
+@media screen and(max-width: 988px) {
+  #footer {
+    > .content {
+      width: 90% !important;
+    }
+  }
+}
 #footer {
   width: 100%;
   position: relative;
   left: 0;
-  background-color: rgba(37, 36, 56, 0.9);
+  background: #454b58;
   bottom: 0;
   z-index: 999;
-}
-
-// 分割下划线
-.footer-line {
-  width: 80%;
-  height: 1px;
-  background-color: #fff;
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-// 底部版权
-.bottom-copyright {
-  width: 80%;
-  margin: 0 auto;
-  .bottom-copyright-item {
-    span {
-      font-size: 16px;
-      color: @color-grey;
-      margin-left: 10px;
-    }
-  }
 }
 </style>

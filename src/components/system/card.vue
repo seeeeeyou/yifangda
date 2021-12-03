@@ -48,36 +48,48 @@ export default {
 
 <style scoped lang="less">
 // pc端
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1078px) {
   .container {
-    width: 1200px;
-    margin: 0 auto;
+    width: 68%;
   }
 }
 
-// 移动端
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1078px) {
   .container {
     width: 90%;
-    margin: 0 auto;
   }
 }
 
-.card {
-  .card-header {
-    padding-top: 30px;
-    margin: 0 auto;
-    max-width: 1100px;
-    text-indent: 3em;
+@media screen and (max-width: 930px) {
+  .container {
+    .card-body {
+      grid-template-columns: repeat(2, 50%) !important;
+    }
   }
-  .card-body {
-    width: 100%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 356px);
-    grid-gap: 20px;
-    justify-content: center;
-    padding: 40px;
+}
+.container {
+  margin: 40px auto;
+  .card {
+    .card-header {
+      // max-width: 1100px;
+      text-indent: 3em;
+    }
+    .card-body {
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 33.3%);
+      grid-gap: 15px;
+      justify-content: center;
+      // padding: 20px;
+      > .imgItem {
+        width: 100%;
+        > img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
   }
 }
 </style>

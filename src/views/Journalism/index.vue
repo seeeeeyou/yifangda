@@ -1,7 +1,6 @@
 <template>
   <div class="journalism">
     <my-banner :banner="banner" :nav="nav" />
-    <h1>新闻</h1>
     <router-view />
   </div>
 </template>
