@@ -114,7 +114,6 @@ export default {
             width: 100%;
           }
         }
-
         > .title {
           font-size: 13px;
           font-family: Microsoft YaHei, Microsoft YaHei-Regular;
