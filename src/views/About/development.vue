@@ -44,7 +44,7 @@
             <div class="time_line">
               <div
                 class="line"
-                style="height: 120px; margin: -20px 0px 0px 46.5px"
+                style="height: 120px; margin: -20px 0px 0px 46px"
               ></div>
             </div>
           </div>
@@ -132,6 +132,7 @@ export default {
 @media screen and(max-width:995px) {
   .development {
     .content {
+      width: 68%;
       > .pc {
         display: none;
       }
@@ -144,14 +145,14 @@ export default {
 @media screen and(max-width:657px) {
   .development {
     .content {
-      width: 95% !important;
+      width: 90%;
       > .pc {
         display: none;
       }
       > .mobile {
         display: block;
-        > .item {
-          height: 400px !important;
+        .item {
+          height: 120px !important;
         }
       }
     }
@@ -160,12 +161,13 @@ export default {
 .development {
   width: 100%;
   .content {
-    width: 68%;
+    // width: 68%;
     padding: 50px 0;
     margin: auto;
     .pc {
       min-width: 1033px;
-      width: 100%;
+      width: 68%;
+      margin: auto;
       > .item {
         width: 100%;
         position: relative;
@@ -250,12 +252,7 @@ export default {
         text-align: left;
         padding: 15px 80px 15px 15px;
         width: auto !important;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        >p{
+        > p {
           margin: 0;
         }
         > :last-child {
@@ -285,12 +282,10 @@ export default {
     }
   }
   .item_line {
-    height: 2px;
-    background-color: #d20505;
+    border-top:  2px solid #d20505;
   }
   .vertical {
-    width: 2px;
-    background-color: #d20505;
+    border-left:  2px solid #d20505;
   }
 }
 </style>

@@ -10,12 +10,19 @@
           <p class="title">{{ item.noticeTitle }}</p>
           <p>宜方达花园</p>
           <hr />
-          <p class="text" v-html="item.noticeContent"></p>
+          <div class="address">
+            <div><img src="@/assets/img/project/address.png" alt="" /></div>
+            <p class="text" v-html="item.noticeContent"></p>
+          </div>
         </div>
       </div>
       <div class="pager">
         <div class="current">当前{{ pageNum }}/{{ total }}页</div>
-        <a-pagination :default-current="1" :total="total*10" @change="pageChange" />
+        <a-pagination
+          :default-current="1"
+          :total="total * 10"
+          @change="pageChange"
+        />
         <div class="end">尾页</div>
       </div>
     </div>
@@ -80,7 +87,7 @@ export default {
 }
 @media screen and(max-width: 830px) {
   .project {
-    .content{
+    .content {
       width: 95%;
     }
     .list {
@@ -115,6 +122,16 @@ export default {
         > :nth-child(3) {
           .title();
           color: #999999;
+        }
+        > .address {
+          display: flex;
+          > div {
+            width: 13px;
+            margin-right: 5px;
+            > img {
+              width: 100%;
+            }
+          }
         }
       }
     }

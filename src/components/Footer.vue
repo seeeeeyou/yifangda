@@ -1,5 +1,5 @@
 <template>
-  <div id="footer" :style="`background-image:url(${require('@/assets/img/Home/footer.png')})`">
+  <div id="footer" :style="`background-image:url(${require('@/assets/img/Home/footer.png')});background-size: cover;`">
     <div class="content">
       <!-- 联系方式 -->
       <div class="footer-top">
@@ -184,6 +184,7 @@ export default {
 @color-grey: grey;
 
 #footer {
+  
   .content {
     width: 80%;
     margin: auto;
