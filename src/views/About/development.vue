@@ -255,8 +255,7 @@ export default {
         > p {
           margin: 0;
         }
-        > :last-child {
-        }
+
       }
     }
   }

@@ -1,5 +1,5 @@
 {
-  "name": "yifnagda",
+  "name": "yifangda",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -23,20 +23,25 @@
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "autoprefixer": "^10.4.0",
+    "autoprefixer": "^8.0.0",
+    "css-loader": "^6.5.1",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
+    "postcss": "^8.4.4",
     "postcss-loader": "^6.2.1",
+    "style-loader": "^3.3.1",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
+    "Firefox >= 20",
     "not dead",
     "Chrome >= 20",
     "ff >= 20",
     "ie >= 7",
     "Opera >= 12",
-    "Safari >= 9.1"
+    "Safari >= 9.1",
+    "Android > 4.4"
   ]
 }

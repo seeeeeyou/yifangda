@@ -35,17 +35,17 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@media screen and(min-width: 1200px) {
+@media screen and(min-width: 1000px) {
   .qualifications {
     .content {
-      width: 68%;
+      width: 80%;
     }
   }
 }
-@media screen and(max-width: 1200px) {
+@media screen and(max-width: 1000px) {
   .qualifications {
     .content {
-      width: 90%;
+      width: 100%;
     }
   }
 }
